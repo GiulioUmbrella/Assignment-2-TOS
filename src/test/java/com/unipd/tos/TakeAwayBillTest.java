@@ -13,8 +13,8 @@ import org.junit.Test;
 import com.unipd.tos.business.*;
 import com.unipd.tos.exception.TakeAwayBillException;
 import com.unipd.tos.model.MenuItem;
-
-
+import com.unipd.tos.model.ItemType;
+import com.unipd.tos.model.MenuItemImpl;
 
 
 public class TakeAwayBillTest {	
@@ -32,11 +32,20 @@ public void testNullMenu() {
  
 @Test 
 public void testEmptyMenu() throws TakeAwayBillException {
-	TakeAwayBill tb = new TakeAwayBillImpl();
-	List<MenuItem> mil = new ArrayList<MenuItem>();
-	assertEquals(0.0,tb.getOrderPrice(mil),0);
+ TakeAwayBill tb = new TakeAwayBillImpl();
+ List<MenuItem> mil = new ArrayList<MenuItem>();
+ assertEquals(0.0,tb.getOrderPrice(mil),0);
 }
  
+@Test
+public void testSingoloPaninoMenu() throws TakeAwayBillException {
+	TakeAwayBill tb = new TakeAwayBillImpl();
+	MenuItem mi = new MenuItemImpl(ItemType.Panini,"Primavera", 5.0);
+	List<MenuItem> mil = new ArrayList<MenuItem>(); 
+	mil.add(mi);	
+	assertEquals(5,tb.getOrderPrice(mil),0);
+	
+}
  
  
  

@@ -15,9 +15,9 @@ private String name;
 private double price;
 
 public MenuItemImpl(ItemType type, String name, double price){
-this.type = type;
-this.name = name;
-this.price = price;
+ this.type = type;
+ this.name = name;
+ this.price = price;
 }
 
 @Override
