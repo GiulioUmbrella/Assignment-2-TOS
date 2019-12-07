@@ -6,6 +6,6 @@ package com.unipd.tos.model;
 import com.unipd.tos.model.ItemType;
 
 public interface MenuItem {
-	ItemType getType();
-	double getPrice();
+ItemType getType();
+double getPrice();
 }

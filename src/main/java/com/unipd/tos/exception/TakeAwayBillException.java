@@ -1,8 +1,10 @@
 ////////////////////////////////////////////////////////////////////
 // Giulio Umbrella 1170486
 ////////////////////////////////////////////////////////////////////
-package com.unipd.tos.model;
+package com.unipd.tos.exception;
 
-public enum ItemType {
-Panini, Fritti, Bevande;
+public class TakeAwayBillException extends Exception{
+ public TakeAwayBillException(String error_string){
+  super(error_string);
+ }
 }
