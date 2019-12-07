@@ -103,8 +103,25 @@ public void testMenuCompletoOrdineInverso() throws TakeAwayBillException{
 @Test
 public void testScontoPaninoMenoCaro() throws TakeAwayBillException {
  addElementsToMenu(ItemType.Panini, "Primavera",   5.0, 4);
- addElementsToMenu(ItemType.Panini, "Vegetariano", 2.0, 1);
+ addElementsToMenu(ItemType.Panini, "Vegetariano", 2.0, 1); 
  
+ assertEquals(21.0,tb.getOrderPrice(mil),0);
+}
+
+@Test
+public void testScontoPaninoMenoCaroPrimo() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini, "Vegetariano", 2.0, 1);
+ addElementsToMenu(ItemType.Panini, "Primavera",   5.0, 4);
+  
+ assertEquals(21.0,tb.getOrderPrice(mil),0);
+}
+
+@Test
+public void testScontoPaninoMenoCaroInMezzo() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini, "Primavera",   5.0, 2);
+ addElementsToMenu(ItemType.Panini, "Vegetariano", 2.0, 1);
+ addElementsToMenu(ItemType.Panini, "Primavera",   5.0, 2);
+  
  assertEquals(21.0,tb.getOrderPrice(mil),0);
 }
 
