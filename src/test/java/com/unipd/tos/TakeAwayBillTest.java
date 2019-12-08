@@ -141,7 +141,39 @@ public void testScontoTotalePaniniFritti() throws TakeAwayBillException {
  assertEquals(54.0,tb.getOrderPrice(mil),0);
 }
 
+@Test
+public void testNoScontoTotalePaniniFritti() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Fritti,  "Patatine",    10.0, 2);
+ addElementsToMenu(ItemType.Panini,  "Vegetariano", 5.0, 4);  
+ assertEquals(40.0,tb.getOrderPrice(mil),0);
+}
 
+
+@Test
+public void testPrezzoPienoBibite() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Bevande,  "Chinotto", 3.0, 4);
+ assertEquals(12.0,tb.getOrderPrice(mil),0);
+}
+
+@Test
+public void testScontoTotalePaniniFrittiBibiteInMezzo() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
+ addElementsToMenu(ItemType.Fritti,   "Patatine",    20.0, 2);
+ addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
+ addElementsToMenu(ItemType.Panini,   "Vegetariano", 5.0,  4);
+ addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
+ assertEquals(56.7,tb.getOrderPrice(mil),0);
+}
+
+@Test
+public void testNessunoPaniniFrittiBibiteInMezzo() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
+ addElementsToMenu(ItemType.Fritti,   "Patatine",    10.0, 2);
+ addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
+ addElementsToMenu(ItemType.Panini,   "Vegetariano", 5.0,  4);
+ addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
+ assertEquals(43.0,tb.getOrderPrice(mil),0);
+}
 
 
 }
