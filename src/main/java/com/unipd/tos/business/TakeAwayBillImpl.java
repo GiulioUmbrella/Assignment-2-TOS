@@ -31,8 +31,22 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   if(menuHaAlmenoNPanini(itemsOrdered , 5)) 
  	 orderDiscount += calcolaScontoPaninoMenoCostoso(itemsOrdered);
   
+  if(importoPaniniFrittiSuperaSoglia(itemsOrdered,50.0)) 
+    orderDiscount += orderPrice*0.10;
+  
+  
   return orderPrice-orderDiscount;
  }
+
+private boolean importoPaniniFrittiSuperaSoglia(List<MenuItem> itemsOrdered, double soglia) {
+ double importoPaniniFritti = 0;
+ for(MenuItem mi : itemsOrdered ) {
+  if(mi.getType() != ItemType.Bevande)
+   importoPaniniFritti += mi.getPrice();	
+  }
+
+return (importoPaniniFritti > soglia) ? true : false;
+}
 
  private boolean menuHaAlmenoNPanini(List<MenuItem> itemsOrdered, int numPanini) {
 

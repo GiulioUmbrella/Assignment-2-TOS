@@ -125,4 +125,23 @@ public void testScontoPaninoMenoCaroInMezzo() throws TakeAwayBillException {
  assertEquals(21.0,tb.getOrderPrice(mil),0);
 }
 
+@Test
+public void testScontoPaninoMenoDopoAltreOrdinazioni() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Fritti,  "Patatine",    1.0, 1);
+ addElementsToMenu(ItemType.Bevande, "Chinotto",    1.0, 1);
+ addElementsToMenu(ItemType.Panini,  "Vegetariano", 2.0, 1);  
+ addElementsToMenu(ItemType.Panini,  "Primavera",   5.0, 4);
+ assertEquals(23.0,tb.getOrderPrice(mil),0);
+}
+
+@Test
+public void testScontoTotalePaniniFritti() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Fritti,  "Patatine",    20.0, 2);
+ addElementsToMenu(ItemType.Panini,  "Vegetariano", 5.0, 4);  
+ assertEquals(54.0,tb.getOrderPrice(mil),0);
+}
+
+
+
+
 }
