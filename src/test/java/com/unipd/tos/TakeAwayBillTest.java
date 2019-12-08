@@ -54,22 +54,22 @@ public void testEmptyMenu() throws TakeAwayBillException {
  
 @Test
 public void testSingoloPaninoMenu() throws TakeAwayBillException {
-	addElementsToMenu(ItemType.Panini,"Primavera", 5.0, 1);	
-	assertEquals(5,tb.getOrderPrice(mil),0);
+	addElementsToMenu(ItemType.Panini,"Primavera", 10.0, 1);	
+	assertEquals(10.0,tb.getOrderPrice(mil),0);
 	
 }
  
 @Test
 public void testSingoloFrittiMenu() throws TakeAwayBillException {
-	addElementsToMenu(ItemType.Fritti,"Arancini", 5.0, 1);	
-	assertEquals(5,tb.getOrderPrice(mil),0);
+	addElementsToMenu(ItemType.Fritti,"Arancini", 10.0, 1);	
+	assertEquals(10.0,tb.getOrderPrice(mil),0);
 	
 }
 
 @Test
 public void testSingolaBibitaMenu() throws TakeAwayBillException {
-	addElementsToMenu(ItemType.Bevande,"Chinotto", 5.0, 1);	
-	assertEquals(5,tb.getOrderPrice(mil),0);
+	addElementsToMenu(ItemType.Bevande,"Chinotto", 10.0, 1);	
+	assertEquals(10.0,tb.getOrderPrice(mil),0);
 	
 }
 
@@ -174,6 +174,28 @@ public void testNessunoPaniniFrittiBibiteInMezzo() throws TakeAwayBillException 
  addElementsToMenu(ItemType.Bevande,  "Chinotto",    1.0,  1);
  assertEquals(43.0,tb.getOrderPrice(mil),0);
 }
+
+@Test
+public void  testRincaroOrdinePiccolo() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini,   "Vegetariano", 4.0,  2);
+ assertEquals(8.5,tb.getOrderPrice(mil),0);
+
+}
+@Test
+public void testSingoloPaninoMenuRincaro() throws TakeAwayBillException {
+	addElementsToMenu(ItemType.Panini,"Primavera", 5.0, 1);	
+	assertEquals(5.5,tb.getOrderPrice(mil),0);
+}
+ 
+@Test
+public void testMenuCompletoRincaro() throws TakeAwayBillException {
+	addElementsToMenu(ItemType.Panini, "Primavera", 3.0, 1);	
+	addElementsToMenu(ItemType.Fritti, "Arancini",  3.0, 1);
+	addElementsToMenu(ItemType.Bevande,"Chinotto",  3.0, 1);
+	assertEquals(9.5,tb.getOrderPrice(mil),0);
+}
+
+
 
 
 }

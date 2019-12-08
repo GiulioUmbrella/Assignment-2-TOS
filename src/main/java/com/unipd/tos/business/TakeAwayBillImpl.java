@@ -34,6 +34,8 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   if(importoPaniniFrittiSuperaSoglia(itemsOrdered,50.0)) 
     orderDiscount += orderPrice*0.10;
   
+  if(orderPrice < 10)
+   orderPrice += 0.5;
   
   return orderPrice-orderDiscount;
  }
