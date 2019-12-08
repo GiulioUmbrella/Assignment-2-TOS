@@ -191,8 +191,26 @@ public void testMenuCompletoRincaro() throws TakeAwayBillException {
 }
 
 @Test(expected=TakeAwayBillException.class)
-public void testNumeroMassimoDiElementi() throws TakeAwayBillException {
+public void testPrimoValoreOltreNumeroMassimoDiElementi() throws TakeAwayBillException {
  addElementsToMenu(ItemType.Panini, "Primavera", 3.0, 31); 
+ tb.getOrderPrice(mil);	
+}
+
+@Test
+public void testSogliaNumeroMassimoDiElementi() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini, "Primavera", 3.0, 30); 
+ tb.getOrderPrice(mil);	
+}
+
+@Test
+public void testQuasiSogliaNumeroMassimoDiElementi() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini, "Primavera", 3.0, 29); 
+ tb.getOrderPrice(mil);	
+}
+
+@Test(expected=TakeAwayBillException.class)
+public void testSecondoValoreOltreNumeroMassimoDiElementi() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini, "Primavera", 3.0, 32); 
  tb.getOrderPrice(mil);	
 }
 

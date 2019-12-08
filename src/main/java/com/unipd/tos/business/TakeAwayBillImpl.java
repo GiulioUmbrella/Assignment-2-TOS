@@ -16,19 +16,18 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   private double orderDiscount = 0;	
 	
   @Override
-  public double getOrderPrice(List<MenuItem> itemsOrdered) throws TakeAwayBillException {
+  public double getOrderPrice(List<MenuItem> itemsOrdered) 
+   throws TakeAwayBillException {
   
-  if (itemsOrdered == null){
+  if (itemsOrdered == null)
    throw new TakeAwayBillException("Hai inserito una lista nulla");
-  }  	  
   
   if(itemsOrdered.size() == 0)
-	  return 0;
+   return 0;
   
   if(itemsOrdered.size() > 30)
    throw new TakeAwayBillException("Troppi elementi nel menu");
-  
-  
+    
   for(int i = 0; i < itemsOrdered.size(); i++ )
 	  orderPrice += itemsOrdered.get(i).getPrice();
     
@@ -44,7 +43,8 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   return orderPrice-orderDiscount;
  }
 
-private boolean importoPaniniFrittiSuperaSoglia(List<MenuItem> itemsOrdered, double soglia) {
+private boolean importoPaniniFrittiSuperaSoglia
+(List<MenuItem> itemsOrdered, double soglia) {
  double importoPaniniFritti = 0;
  for(MenuItem mi : itemsOrdered ) {
   if(mi.getType() != ItemType.Bevande)
@@ -54,7 +54,7 @@ private boolean importoPaniniFrittiSuperaSoglia(List<MenuItem> itemsOrdered, dou
 return (importoPaniniFritti > soglia) ? true : false;
 }
 
- private boolean menuHaAlmenoNPanini(List<MenuItem> itemsOrdered, int numPanini) {
+ private boolean menuHaAlmenoNPanini(List<MenuItem> itemsOrdered,int numPanini){
 
    int i=0, contatorePanini = 0;	
    boolean almenoNPanini = false;
