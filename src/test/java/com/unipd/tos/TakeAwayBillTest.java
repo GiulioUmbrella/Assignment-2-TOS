@@ -110,9 +110,9 @@ public void testScontoPaninoMenoCaro() throws TakeAwayBillException {
 
 @Test
 public void testScontoPaninoMenoCaroPrimo() throws TakeAwayBillException {
- addElementsToMenu(ItemType.Panini, "Vegetariano", 2.0, 1);
+ addElementsToMenu(ItemType.Panini, "Vegetariano", 2.0, 1);  
  addElementsToMenu(ItemType.Panini, "Primavera",   5.0, 4);
-  
+	   
  assertEquals(21.0,tb.getOrderPrice(mil),0);
 }
 

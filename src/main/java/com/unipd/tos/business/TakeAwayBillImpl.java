@@ -34,6 +34,25 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   return orderPrice-orderDiscount;
  }
 
+ private boolean menuHaAlmenoNPanini(List<MenuItem> itemsOrdered, int numPanini) {
+
+   int i=0, contatorePanini = 0;	
+   boolean almenoNPanini = false;
+
+   while( !almenoNPanini && i < itemsOrdered.size() ) {
+	
+    if(itemsOrdered.get(i).getType() == ItemType.Panini)
+     contatorePanini++;
+	
+    if(contatorePanini == numPanini)
+     almenoNPanini = true;
+		
+    i++;	 
+   }
+
+  return almenoNPanini;
+ }
+  
  private double calcolaScontoPaninoMenoCostoso(List<MenuItem> itemsOrdered) {
   boolean trovatoPanino = false;
 
@@ -41,7 +60,8 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   while(!trovatoPanino) {
    if(itemsOrdered.get(i).getType()==ItemType.Panini)
     trovatoPanino = true;
-   i++;
+   else
+    i++;
   }
 
   double valueMin = itemsOrdered.get(i).getPrice();
@@ -56,24 +76,7 @@ public class TakeAwayBillImpl implements TakeAwayBill {
 	
   return valueMin/2;
 
-}
-
- private boolean menuHaAlmenoNPanini(List<MenuItem> itemsOrdered, int numPanini) {
-
-  int i=0, contatorePanini = 0;	
-  boolean almenoNPanini = false;
-
-  while( !almenoNPanini && i < itemsOrdered.size() ) {
-	
-   if(itemsOrdered.get(i).getType() == ItemType.Panini)
-    contatorePanini++;
-	
-   if(contatorePanini == numPanini)
-    almenoNPanini = true;
-		
-   i++;	
-  }
-
-  return almenoNPanini;
  }
+
+
 }
