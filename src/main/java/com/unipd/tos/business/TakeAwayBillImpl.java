@@ -24,7 +24,11 @@ public class TakeAwayBillImpl implements TakeAwayBill {
   
   if(itemsOrdered.size() == 0)
 	  return 0;
-    
+  
+  if(itemsOrdered.size() > 30)
+   throw new TakeAwayBillException("Troppi elementi nel menu");
+  
+  
   for(int i = 0; i < itemsOrdered.size(); i++ )
 	  orderPrice += itemsOrdered.get(i).getPrice();
     

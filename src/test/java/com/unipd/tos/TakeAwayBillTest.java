@@ -190,7 +190,11 @@ public void testMenuCompletoRincaro() throws TakeAwayBillException {
 	assertEquals(9.5,tb.getOrderPrice(mil),0);
 }
 
-
+@Test(expected=TakeAwayBillException.class)
+public void testNumeroMassimoDiElementi() throws TakeAwayBillException {
+ addElementsToMenu(ItemType.Panini, "Primavera", 3.0, 31); 
+ tb.getOrderPrice(mil);	
+}
 
 
 }
