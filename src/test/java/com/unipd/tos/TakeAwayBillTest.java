@@ -37,14 +37,9 @@ public class TakeAwayBillTest {
  }
  
 	
- @Test
-public void testNullMenu() {
- try {
- assertEquals(0, tb.getOrderPrice(null) ,0);
- } catch (TakeAwayBillException e) {
- // TODO Auto-generated catch block
- e.printStackTrace();
- }
+ @Test(expected=TakeAwayBillException.class)
+public void testNullMenu() throws TakeAwayBillException {
+ tb.getOrderPrice(null);
 }
  
 @Test 
